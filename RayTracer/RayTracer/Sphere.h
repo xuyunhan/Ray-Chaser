@@ -1,10 +1,12 @@
 #pragma once
 #include "Vector3.h"
-#include "IntersectResult.h"
+// #include "IntersectResult.h"
 #include "Ray3.h"
+#include "Geometry.h"
 
 class IntersectResult;
-class Sphere
+// class Geometry;
+class Sphere : public Geometry
 {
 public:
 	Sphere();
@@ -19,5 +21,7 @@ public:
 	Sphere Copy();
 	// 求ray和球体的交点
 	IntersectResult Intersect(Ray3 ray);
+// 	Material* material;
+
 };
 

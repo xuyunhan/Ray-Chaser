@@ -174,58 +174,60 @@ END
 // Menu
 //
 
-IDR_MAINFRAME MENU
+IDR_MAINFRAME MENUEX
 BEGIN
-    POPUP "文件(&F)"
+    POPUP "文件(&F)",                         65535,MFT_STRING,MFS_ENABLED
     BEGIN
-        MENUITEM "新建(&N)\tCtrl+N",              ID_FILE_NEW
-        MENUITEM "打开(&O)...\tCtrl+O",           ID_FILE_OPEN
-        MENUITEM "保存(&S)\tCtrl+S",              ID_FILE_SAVE
-        MENUITEM "另存为(&A)...",                  ID_FILE_SAVE_AS
-        MENUITEM SEPARATOR
-        MENUITEM "最近的文件",                       ID_FILE_MRU_FILE1
-        MENUITEM SEPARATOR
-        MENUITEM "退出(&X)",                      ID_APP_EXIT
+        MENUITEM "新建(&N)\tCtrl+N",              ID_FILE_NEW,MFT_STRING,MFS_ENABLED
+        MENUITEM "打开(&O)...\tCtrl+O",           ID_FILE_OPEN,MFT_STRING,MFS_ENABLED
+        MENUITEM "保存(&S)\tCtrl+S",              ID_FILE_SAVE,MFT_STRING,MFS_ENABLED
+        MENUITEM "另存为(&A)...",                  ID_FILE_SAVE_AS,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "最近的文件",                       ID_FILE_MRU_FILE1,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "退出(&X)",                      ID_APP_EXIT,MFT_STRING,MFS_ENABLED
     END
-    POPUP "编辑(&E)"
+    POPUP "编辑(&E)",                         65535,MFT_STRING,MFS_ENABLED
     BEGIN
-        MENUITEM "撤消(&U)\tCtrl+Z",              ID_EDIT_UNDO
-        MENUITEM SEPARATOR
-        MENUITEM "剪切(&T)\tCtrl+X",              ID_EDIT_CUT
-        MENUITEM "复制(&C)\tCtrl+C",              ID_EDIT_COPY
-        MENUITEM "粘贴(&P)\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "撤消(&U)\tCtrl+Z",              ID_EDIT_UNDO,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "剪切(&T)\tCtrl+X",              ID_EDIT_CUT,MFT_STRING,MFS_ENABLED
+        MENUITEM "复制(&C)\tCtrl+C",              ID_EDIT_COPY,MFT_STRING,MFS_ENABLED
+        MENUITEM "粘贴(&P)\tCtrl+V",              ID_EDIT_PASTE,MFT_STRING,MFS_ENABLED
     END
-    POPUP "视图(&V)"
+    POPUP "视图(&V)",                         65535,MFT_STRING,MFS_ENABLED
     BEGIN
-        POPUP "工具栏和停靠窗口(&T)"
+        POPUP "工具栏和停靠窗口(&T)",                   65535,MFT_STRING,MFS_ENABLED
         BEGIN
-            MENUITEM "<占位符>",                       ID_VIEW_TOOLBAR
+            MENUITEM "<占位符>",                       ID_VIEW_TOOLBAR,MFT_STRING,MFS_ENABLED
         END
-        MENUITEM "状态栏(&S)",                     ID_VIEW_STATUS_BAR
-        POPUP "应用程序外观(&A)"
+        MENUITEM "状态栏(&S)",                     ID_VIEW_STATUS_BAR,MFT_STRING,MFS_ENABLED
+        POPUP "应用程序外观(&A)",                     65535,MFT_STRING,MFS_ENABLED
         BEGIN
-            MENUITEM "Windows 2000(&2)",            ID_VIEW_APPLOOK_WIN_2000
-            MENUITEM "Office XP(&X)",               ID_VIEW_APPLOOK_OFF_XP
-            MENUITEM "Windows XP(&W)",              ID_VIEW_APPLOOK_WIN_XP
-            MENUITEM "Office 2003(&3)",             ID_VIEW_APPLOOK_OFF_2003
-            MENUITEM "Visual Studio 200&5",         ID_VIEW_APPLOOK_VS_2005
-            MENUITEM "Visual Studio 200&8",         ID_VIEW_APPLOOK_VS_2008
-            POPUP "Office 2007(&7)"
+            MENUITEM "Windows 2000(&2)",            ID_VIEW_APPLOOK_WIN_2000,MFT_STRING,MFS_ENABLED
+            MENUITEM "Office XP(&X)",               ID_VIEW_APPLOOK_OFF_XP,MFT_STRING,MFS_ENABLED
+            MENUITEM "Windows XP(&W)",              ID_VIEW_APPLOOK_WIN_XP,MFT_STRING,MFS_ENABLED
+            MENUITEM "Office 2003(&3)",             ID_VIEW_APPLOOK_OFF_2003,MFT_STRING,MFS_ENABLED
+            MENUITEM "Visual Studio 200&5",         ID_VIEW_APPLOOK_VS_2005,MFT_STRING,MFS_ENABLED
+            MENUITEM "Visual Studio 200&8",         ID_VIEW_APPLOOK_VS_2008,MFT_STRING,MFS_ENABLED
+            POPUP "Office 2007(&7)",                65535,MFT_STRING,MFS_ENABLED
             BEGIN
-                MENUITEM "蓝色样式(&B)",                    ID_VIEW_APPLOOK_OFF_2007_BLUE
-                MENUITEM "黑色样式(&L)",                    ID_VIEW_APPLOOK_OFF_2007_BLACK
-                MENUITEM "银色样式(&S)",                    ID_VIEW_APPLOOK_OFF_2007_SILVER
-                MENUITEM "水绿色样式(&A)",                   ID_VIEW_APPLOOK_OFF_2007_AQUA
+                MENUITEM "蓝色样式(&B)",                    ID_VIEW_APPLOOK_OFF_2007_BLUE,MFT_STRING,MFS_ENABLED
+                MENUITEM "黑色样式(&L)",                    ID_VIEW_APPLOOK_OFF_2007_BLACK,MFT_STRING,MFS_ENABLED
+                MENUITEM "银色样式(&S)",                    ID_VIEW_APPLOOK_OFF_2007_SILVER,MFT_STRING,MFS_ENABLED
+                MENUITEM "水绿色样式(&A)",                   ID_VIEW_APPLOOK_OFF_2007_AQUA,MFT_STRING,MFS_ENABLED
             END
         END
     END
-    POPUP "帮助(&H)"
+    POPUP "帮助(&H)",                         65535,MFT_STRING,MFS_ENABLED
     BEGIN
-        MENUITEM "关于 RayTracer(&A)...",         ID_APP_ABOUT
+        MENUITEM "关于 RayTracer(&A)...",         ID_APP_ABOUT,MFT_STRING,MFS_ENABLED
     END
-    POPUP "渲染深度图"
+    POPUP "渲染",                             65535,MFT_STRING | MFT_RIGHTORDER | MFT_RIGHTJUSTIFY,MFS_ENABLED
     BEGIN
-        MENUITEM "渲染",                          ID_32774
+        MENUITEM "渲染深度图",                       ID_32774,MFT_STRING,MFS_ENABLED
+        MENUITEM "渲染法向量",                       ID_32775,MFT_STRING,MFS_ENABLED
+        MENUITEM "渲染材质",                        ID_32776,MFT_STRING,MFS_ENABLED
     END
 END
 

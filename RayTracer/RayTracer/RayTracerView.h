@@ -46,9 +46,12 @@ public:
 	// //渲染深度图像
 	void RenderDepth(Sphere* scene, Camera* camera, double maxDepth);
 	afx_msg void RenderDepthButtonDown();
-//	afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
-//	afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+	// 渲染法向量
+	void RenderNormal(Sphere* scene, Camera* camera, double maxDepth);
+	void RenderMaterial(Geometry* scene, Camera* camera, double maxDepth);
+	afx_msg void RenderNormalButtonDown();
+	afx_msg void OnRenderMaterialButtonDown();
 };
 
 #ifndef _DEBUG  // RayTracerView.cpp 中的调试版本
