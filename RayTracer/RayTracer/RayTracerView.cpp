@@ -35,6 +35,7 @@ ON_WM_LBUTTONUP()
 //ON_COMMAND(ID_32775, &CRayTracerView::On32775)
 ON_COMMAND(ID_32775, &CRayTracerView::RenderNormalButtonDown)
 ON_COMMAND(ID_32776, &CRayTracerView::OnRenderMaterialButtonDown)
+ON_COMMAND(ID_32777, &CRayTracerView::OnRenderRayTraceButtonDown)
 END_MESSAGE_MAP()
 
 // CRayTracerView 构造/析构
@@ -64,7 +65,10 @@ BOOL CRayTracerView::PreCreateWindow(CREATESTRUCT& cs)
 {
 	// TODO:  在此处通过修改
 	//  CREATESTRUCT cs 来修改窗口类或样式
-
+// 	cs.cx = 500;
+// 	cs.cy = 500;
+// 	cs.style &= ~WS_MAXIMIZEBOX;
+// 	cs.style &= ~WS_THICKFRAME;
 	return CView::PreCreateWindow(cs);
 }
 
@@ -285,4 +289,83 @@ void CRayTracerView::OnRenderMaterialButtonDown()
 	delete plane.material;
 	delete sphere1.material;
 	delete sphere2.material;
+}
+
+
+void CRayTracerView::OnRenderRayTraceButtonDown()
+{
+	// TODO:  在此添加命令处理程序代码
+	Plane plane = Plane(Vector3(0, 1, 0), 0);
+	Sphere sphere1 = Sphere(Vector3(-10, 10, -10), 10);
+	Sphere sphere2 = Sphere(Vector3(10, 10, -10), 10);
+	Sphere sphere3 = Sphere(Vector3(0, 3, -5), 3);
+	plane.material = new CheckerMaterial(0.1, 0.6);
+	sphere1.material = new PhongMaterial(Color::Red(), Color::White(), 16, 0.25);
+	sphere2.material = new PhongMaterial(Color::Blue(), Color::White(), 16, 0.25);
+	sphere3.material = new PhongMaterial(Color::Green(), Color::White(), 16, 0.25);
+
+	Union u;
+	u.AddGeometry(&plane);
+	u.AddGeometry(&sphere1);
+	u.AddGeometry(&sphere2);
+	u.AddGeometry(&sphere3);
+
+	RenderRayTrace(&u, &Camera(Vector3(0, 5, 15), Vector3(0, 0, -1), Vector3(0, 1, 0), 90), 20);
+
+	delete plane.material;
+	delete sphere1.material;
+	delete sphere2.material;
+	delete sphere3.material;
+}
+
+
+void CRayTracerView::RenderRayTrace(Geometry* scene, Camera* camera, int maxReflect)
+{
+	CDC* pDC = GetDC();
+
+	if (scene == nullptr || camera == nullptr)
+	{
+		return;
+	}
+	int interectPointCount = 0;
+	double i = 0;
+	const int h = 512;//宽高都是512个像素点
+	const int w = 512;
+	for (int y = 0; y < h; y++)
+	{
+		double sy = 1 - (double)y / (double)h;//生成垂直方向的[0,1]坐标，因为左下角为(0,0)，所以x,y=0,0时sy应该是1。
+		for (int x = 0; x < w; x++)
+		{
+			double sx = (double)x / (double)w;//生成垂直方向的[0,1]坐标
+			Ray3 ray = camera->GenerateRay(sx, sy);//生成光线
+			Color color = RayTraceRecursive(scene, &ray, maxReflect);
+			color.Round();
+			pDC->SetPixel(x, y, RGB(color.r * 255, color.g * 255, color.b * 255));
+		}
+	}
+}
+
+Color CRayTracerView::RayTraceRecursive(Geometry* scene, Ray3* ray, int maxReflect)
+{
+	IntersectResult result = scene->Intersect(*ray);
+
+	if (result.geometry != nullptr)
+	{
+		double reflectiveness = result.geometry->material->reflectiveness;
+		Color color = result.geometry->material->Sample(*ray, result.position, result.normal);
+		color = color.Multiply(1 - reflectiveness);
+		if (reflectiveness > 0 && maxReflect > 0)
+		{
+			Vector3 r = result.normal.Multiply(-2 * result.normal.Dot(ray->direction)).Add(ray->direction);
+			ray = new Ray3(result.position, r);
+			Color reflectedColor = RayTraceRecursive(scene, ray, maxReflect - 1);
+			color = color.Add(reflectedColor.Multiply(reflectiveness));
+			if(ray != nullptr) delete ray;
+		}
+		return color;
+	}
+	else
+	{
+		return Color::Black();
+	}
 }

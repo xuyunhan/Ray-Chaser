@@ -7,6 +7,8 @@ class Material
 public:
 	Material();
 	~Material();
+	double reflectiveness;// ·´ÉäÏµÊı
+
 	virtual Color Sample(Ray3 ray, Vector3 position, Vector3 normal) { return Color(); }
 };
 

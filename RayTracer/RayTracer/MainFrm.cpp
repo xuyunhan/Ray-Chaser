@@ -183,6 +183,13 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 	// TODO:  在此处通过修改
 	//  CREATESTRUCT cs 来修改窗口类或样式
 
+// 	cs.cx = 100;
+// 	cs.cy = 100;
+// 	cs.cx = 50;
+// 	cs.cy = 500;
+	cs.style &= ~WS_MAXIMIZEBOX;
+	cs.style &= ~WS_THICKFRAME;
+
 	return TRUE;
 }
 

@@ -8,7 +8,7 @@ class PhongMaterial : public Material
 public:
 	PhongMaterial();
 	~PhongMaterial();
-	double shininess, reflectiveness;
+	double shininess;
 	Color  diffuse, specular;
 	PhongMaterial(Color diffuse, Color specular, double shininess, double reflectiveness);
 

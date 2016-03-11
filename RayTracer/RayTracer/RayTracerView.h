@@ -52,6 +52,9 @@ public:
 	void RenderMaterial(Geometry* scene, Camera* camera, double maxDepth);
 	afx_msg void RenderNormalButtonDown();
 	afx_msg void OnRenderMaterialButtonDown();
+	afx_msg void OnRenderRayTraceButtonDown();
+	void RenderRayTrace(Geometry* scene, Camera* camera, int maxReflect);
+	Color RayTraceRecursive(Geometry* scene, Ray3* ray, int maxReflect);
 };
 
 #ifndef _DEBUG  // RayTracerView.cpp 中的调试版本

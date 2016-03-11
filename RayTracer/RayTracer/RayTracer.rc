@@ -228,6 +228,7 @@ BEGIN
         MENUITEM "渲染深度图",                       ID_32774,MFT_STRING,MFS_ENABLED
         MENUITEM "渲染法向量",                       ID_32775,MFT_STRING,MFS_ENABLED
         MENUITEM "渲染材质",                        ID_32776,MFT_STRING,MFS_ENABLED
+        MENUITEM "渲染光线跟踪",                      ID_32777,MFT_STRING,MFS_ENABLED
     END
 END
 
