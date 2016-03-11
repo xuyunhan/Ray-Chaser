@@ -53,6 +53,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -103,9 +104,12 @@
     <ClInclude Include="CheckerMaterial.h" />
     <ClInclude Include="ClassView.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="DirectionLight.h" />
     <ClInclude Include="FileView.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="IntersectResult.h" />
+    <ClInclude Include="Light.h" />
+    <ClInclude Include="LightSample.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="OutputWnd.h" />
@@ -129,9 +133,12 @@
     <ClCompile Include="CheckerMaterial.cpp" />
     <ClCompile Include="ClassView.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="DirectionLight.cpp" />
     <ClCompile Include="FileView.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="IntersectResult.cpp" />
+    <ClCompile Include="Light.cpp" />
+    <ClCompile Include="LightSample.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="OutputWnd.cpp" />

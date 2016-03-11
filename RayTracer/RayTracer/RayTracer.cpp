@@ -131,7 +131,7 @@ BOOL CRayTracerApp::InitInstance()
 		return FALSE;
 
 	// 唯一的一个窗口已初始化，因此显示它并对其进行更新
-	m_pMainWnd->SetWindowPos(NULL, 0, 0, 532, 575, SWP_NOZORDER | SWP_NOMOVE);
+	m_pMainWnd->SetWindowPos(NULL, 0, 0, 800+20, 800+70, SWP_NOZORDER | SWP_NOMOVE);
 	m_pMainWnd->ShowWindow(SW_SHOW);
 	m_pMainWnd->UpdateWindow();
 	return TRUE;

@@ -90,6 +90,15 @@
     <ClInclude Include="Material.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionLight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LightSample.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RayTracer.cpp">
@@ -156,6 +165,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Material.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectionLight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LightSample.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

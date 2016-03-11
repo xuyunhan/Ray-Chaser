@@ -329,13 +329,17 @@ void CRayTracerView::RenderRayTrace(Geometry* scene, Camera* camera, int maxRefl
 	}
 	int interectPointCount = 0;
 	double i = 0;
-	const int h = 512;//宽高都是512个像素点
-	const int w = 512;
+	const int h = 750;//宽高都是512个像素点
+	const int w = 750;
+// #pragma omp parallel num_threads(4)
+// #pragma omp parallel for
 	for (int y = 0; y < h; y++)
 	{
 		double sy = 1 - (double)y / (double)h;//生成垂直方向的[0,1]坐标，因为左下角为(0,0)，所以x,y=0,0时sy应该是1。
+// #pragma omp parallel for
 		for (int x = 0; x < w; x++)
 		{
+// #pragma omp parallel for
 			double sx = (double)x / (double)w;//生成垂直方向的[0,1]坐标
 			Ray3 ray = camera->GenerateRay(sx, sy);//生成光线
 			Color color = RayTraceRecursive(scene, &ray, maxReflect);
